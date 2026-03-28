@@ -138,9 +138,8 @@ button:active { transform: scale(0.98); }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
 }
-
 .item-card {
   background: rgba(255,255,255,0.92);
   border-radius: 18px;
@@ -153,6 +152,7 @@ button:active { transform: scale(0.98); }
   transition: box-shadow 0.2s, transform 0.2s;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 .item-card::before {
   content: '';
