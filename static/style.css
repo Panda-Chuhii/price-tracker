@@ -136,9 +136,9 @@ button:active { transform: scale(0.98); }
 /* ── Cards ── */
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
-  align-items: stretch;
+  align-items: start;
 }
 .item-card {
   background: rgba(255,255,255,0.92);
@@ -608,6 +608,22 @@ body.dark .alert-target { background: #0f0f13; }
 
 /* ── Responsive / Mobile ── */
 @media (max-width: 768px) {
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
   /* Navbar */
   nav {
