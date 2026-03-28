@@ -138,6 +138,7 @@ button:active { transform: scale(0.98); }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 18px;
+  align-items: start;
 }
 
 .item-card {
@@ -331,7 +332,11 @@ button:active { transform: scale(0.98); }
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 8px;
+  padding: 12px;
+  transition: transform 0.2s;
+}
+.card-image img:hover {
+  transform: scale(1.05);
 }
 .card-image.no-image {
   color: white;
