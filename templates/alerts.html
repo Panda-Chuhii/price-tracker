@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="{{ url_for('dashboard') }}" class="back-link">← Back to dashboard</a>
+<h2>Alerts history</h2>
+
+{% if alerts %}
+  <div class="alerts-list">
+    {% for alert in alerts %}
+    <div class="alert-card">
+      <div class="alert-icon">📉</div>
+      <div class="alert-info">
+        <h3>{{ alert.product_name }}</h3>
+        <p class="alert-date">{{ alert.created_at.strftime('%d %b %Y, %H:%M') }}</p>
+        <div class="alert-prices">
+          <span class="alert-old">Was ₹{{ "%.2f"|format(alert.old_price or 0) }}</span>
+          <span class="alert-arrow">→</span>
+          <span class="alert-new">Now ₹{{ "%.2f"|format(alert.new_price) }}</span>
+          <span class="alert-target">Target ₹{{ "%.2f"|format(alert.target_price) }}</span>
+        </div>
+        <div class="alert-saving">
+          You saved ₹{{ "%.2f"|format((alert.old_price or 0) - alert.new_price) }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty">
+    <div class="empty-icon">🔔</div>
+    <p>No alerts yet. Add products and set target prices to get notified!</p>
+  </div>
+{% endif %}
+
+{% endblock %}

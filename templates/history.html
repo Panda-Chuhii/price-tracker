@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="{{ url_for('dashboard') }}" class="back-link">← Back to dashboard</a>
+<h2>Price history: {{ item.product_name }}</h2>
+<p>Current price: <strong>₹{{ "%.2f"|format(item.current_price) if item.current_price else "unknown" }}</strong>
+   &nbsp;|&nbsp; Target: <strong>₹{{ "%.2f"|format(item.target_price) }}</strong></p>
+
+<div class="chart-box">
+  <canvas id="priceChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = {{ labels | tojson }};
+  const prices = {{ prices | tojson }};
+  new Chart(document.getElementById('priceChart'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Price (₹)',
+        data: prices,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59,130,246,0.08)',
+        tension: 0.3,
+        fill: true,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { ticks: { callback: v => '₹' + v } }
+      }
+    }
+  });
+</script>
+
+{% endblock %}
