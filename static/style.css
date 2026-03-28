@@ -140,6 +140,10 @@ button:active { transform: scale(0.98); }
   gap: 18px;
   align-items: start;
 }
+
+.items-grid .item-card:last-child:nth-child(odd) {
+  max-width: 50%;
+}
 .item-card {
   background: rgba(255,255,255,0.92);
   border-radius: 18px;
