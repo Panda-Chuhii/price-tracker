@@ -1,11 +1,12 @@
+import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from itsdangerous import URLSafeTimedSerializer
 
-SENDER_EMAIL = "pricetrack2815@gmail.com"
-SENDER_PASSWORD = "xvsevhrhzcdvhxmt"
-SECRET_KEY = "your-secret-key-change-this"
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'pricetrack28152gmail.com')
+SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', 'xvsevhrhzcdvhxmt')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key-change-this')
 
 serializer = URLSafeTimedSerializer(SECRET_KEY)
 
