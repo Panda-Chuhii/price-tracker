@@ -8,7 +8,8 @@ from email_utils import send_verification_email, send_reset_email, verify_token
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'change-this-to-anything-secret-123'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///prices.db'
+import os
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///prices.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
