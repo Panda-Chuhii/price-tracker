@@ -65,7 +65,7 @@ def start_scheduler(app):
         func=check_all_prices,
         args=[app],
         trigger='interval',
-        hours = 4
+        hours = 6
     )
     scheduler.start()
-    print("[Scheduler] Price checks will run every 4 hours.")
+    print("[Scheduler] Price checks will run every 6 hours.")
