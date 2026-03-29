@@ -127,23 +127,15 @@ button:active { transform: scale(0.98); }
   margin-bottom: 32px;
   box-shadow: 0 4px 16px rgba(99,102,241,0.08);
 }
-}
+
 .add-form h3 { margin-bottom: 16px; color: #374151; font-size: 16px; }
 .add-form form { flex-direction: row; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
 .add-form input { flex: 1; min-width: 160px; }
 .add-form button { white-space: nowrap; height: 42px; }
 
 /* ── Cards ── */
-.items-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  align-items: start;
-}
 
-.items-grid .item-card:last-child:nth-child(odd) {
-  max-width: 50%;
-}
+
 .item-card {
   background: rgba(255,255,255,0.92);
   border-radius: 18px;
@@ -781,3 +773,23 @@ body.dark .alert-target { background: #0f0f13; }
   transition: opacity 0.2s;
 }
 .btn-buy:hover { opacity: 0.85; }
+
+.items-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 18px !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+
+@media (max-width: 600px) {
+  .items-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
