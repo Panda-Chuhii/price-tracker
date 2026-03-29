@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
+<style>
+  .items-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+    align-items: start !important;
+  }
+  @media (max-width: 600px) {
+    .items-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 1280px) {
+    .items-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  }
+</style>
+
 <h2>Your tracked items</h2>
 
 <div class="add-form">
